@@ -11,14 +11,9 @@ terraform {
   }
 }
 
-provider "azuread" {
-  version = "=2.47.0"
-}
+provider "azuread" {}
 
-provider "azurerm" {
-  version = "=3.97.1"
-  features {}
-}
+provider "azurerm" {}
 
 resource "azurerm_resource_group" "rg" {
   name     = "rg-vm-request-tracker"
