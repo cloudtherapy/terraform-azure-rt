@@ -11,13 +11,18 @@ terraform {
   }
 }
 
-provider "azuread" {}
+provider "azuread" {
+}
 
 provider "azurerm" {
     features {}
+    client_id = var.cetechllc_client_id
+    client_secret = var.cetechllc_client_secret
+    tenant_id = var.cetechllc_tenant_id
+    subscription_id = var.cetechllc_subscription_id
 }
 
 resource "azurerm_resource_group" "rg" {
   name     = "rg-vm-request-tracker"
-  location = var.location
+  location = var.cetechllc_location
 }
