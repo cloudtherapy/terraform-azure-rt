@@ -23,6 +23,6 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-vm-request-tracker"
+  name     = "rg-rt-prod"
   location = var.cetechllc_location
 }
