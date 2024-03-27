@@ -3,26 +3,22 @@ variable "cetechllc_location" {
   default     = "East US"
 }
 
-variable "cetechllc_client_id"" {
+variable "cetechllc_client_id" {
   description = "The Client ID of the Azure AD Application."
-  type = string
-  sensitive = true
+  type        = string
 }
 
 variable "cetechllc_client_secret" {
   description = "The Client Secret of the Azure AD Application."
-  type = string
-  sensitive = true
+  type        = string
 }
 
 variable "cetechllc_tenant_id" {
   description = "The Tenant ID of the Azure AD Application."
-  type = string
-  sensitive = true
+  type        = string
 }
 
 variable "cetechllc_subscription_id" {
   description = "The Subscription ID of the Azure Subscription."
-  type = string
-  sensitive = true
+  type        = string
 }
