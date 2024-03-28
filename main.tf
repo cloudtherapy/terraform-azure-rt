@@ -41,6 +41,15 @@ output "subnet_id" {
   value = data.azurerm_subnet.snet-shared.id
 }
 
+data "azurerm_image" "search" {
+  name                = "cetech-ubuntu22"
+  resource_group_name = "rg-shared-services"
+}
+
+output "image_id" {
+  value = data.azurerm_image.search.id
+}
+
 resource "azurerm_resource_group" "rg-rt-prod" {
   name     = "rg-rt-prod"
   location = var.cetechllc_location
@@ -63,13 +72,13 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   location              = azurerm_resource_group.rg-rt-prod.location
   resource_group_name   = azurerm_resource_group.rg-rt-prod.name
   network_interface_ids = [azurerm_network_interface.vm-rt-prod-nic.id]
-  vm_size               = "Standard_DS1_v2"
+  vm_size               = "Standard_B2ms"
+
+  delete_os_disk_on_termination = true
+  delete_data_disks_on_termination = true
 
   storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
-    version   = "latest"
+    id = data.azurerm_image.search.id
   }
 
   storage_os_disk {
@@ -80,9 +89,9 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   }
 
   os_profile {
-    computer_name  = "hostname"
-    admin_username = "adminuser"
-    admin_password = "Password1234!"
+    computer_name  = "vm-rt-prod"
+    admin_username = "ubuntu"
+    admin_password = var.cetechllc_admin_password
   }
 
   os_profile_linux_config {

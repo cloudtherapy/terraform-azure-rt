@@ -26,3 +26,9 @@ variable "cetechllc_subscription_id" {
   type        = string
   sensitive   = true
 }
+
+variable "cetechllc_admin_password" {
+  description = "The password for the local administrator account."
+  type        = string
+  sensitive   = true
+}
