@@ -52,8 +52,8 @@ resource "azurerm_network_interface" "vm-rt-prod-nic" {
   resource_group_name = azurerm_resource_group.rg-rt-prod.name
 
   ip_configuration {
-    name                          = ""
-    subnet_id                     = azurerm_subnet.internal.id
+    name                          = "vm-rt-prod-ip"
+    subnet_id                     = data.azurerm_subnet.snet-shared.id
     private_ip_address_allocation = "Dynamic"
   }
 }
