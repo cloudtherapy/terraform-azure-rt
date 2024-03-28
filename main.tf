@@ -22,6 +22,12 @@ provider "azurerm" {
   subscription_id = var.cetechllc_subscription_id
 }
 
+data "azurerm_shared_image" "cetech-ubuntu-image" {
+  name                = "cetech-ubuntu22"
+  gallery_name        = "cetech-images"
+  resource_group_name = "rg-shared-resources"
+}
+
 resource "azurerm_resource_group" "rg" {
   name     = "rg-rt-prod"
   location = var.cetechllc_location
