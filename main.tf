@@ -72,7 +72,7 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   location              = azurerm_resource_group.rg-rt-prod.location
   resource_group_name   = azurerm_resource_group.rg-rt-prod.name
   network_interface_ids = [azurerm_network_interface.vm-rt-prod-nic.id]
-  vm_size               = "Standard_B2ms"
+  vm_size               = "Standard_B2s"
 
   delete_os_disk_on_termination = true
   delete_data_disks_on_termination = true
