@@ -42,7 +42,7 @@ output "subnet_id" {
 }
 
 data "azurerm_image" "search" {
-  name                = "cetech-ubuntu22"
+  name                = "cetech-rocky9"
   resource_group_name = "rg-shared-services"
 }
 
@@ -90,7 +90,7 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
 
   os_profile {
     computer_name  = "vm-rt-prod"
-    admin_username = "ubuntu"
+    admin_username = "rocky"
     admin_password = var.cetechllc_admin_password
   }
 
