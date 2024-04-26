@@ -97,4 +97,11 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   os_profile_linux_config {
     disable_password_authentication = false
   }
+
+  plan {
+    name = "rockylinux-9"
+    publisher = "erockyenterprisesoftwarefoundationinc1653071250513"
+    product = "rockylinux-9"
+  }
 }
+
