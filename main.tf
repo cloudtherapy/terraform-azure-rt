@@ -136,4 +136,6 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
     publisher = "erockyenterprisesoftwarefoundationinc1653071250513"
     product   = "rockylinux-9"
   }
+
+  tags = local.tags
 }
