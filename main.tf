@@ -53,7 +53,7 @@ output "image_id" {
 resource "azurerm_resource_group" "rg-rt-prod" {
   name     = "rg-rt-prod"
   location = var.cetechllc_location
-  tags = local.tags
+  tags     = local.tags
 }
 
 resource "azurerm_network_security_group" "nsg_rt" {
@@ -112,7 +112,6 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   resource_group_name   = azurerm_resource_group.rg-rt-prod.name
   network_interface_ids = [azurerm_network_interface.vm-rt-prod-nic.id]
   vm_size               = "Standard_B2s"
-  os_disk_size_gb       = 64
 
   delete_os_disk_on_termination    = true
   delete_data_disks_on_termination = true
@@ -126,6 +125,7 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Premium_LRS"
+    disk_size_gb      = 64
   }
 
   os_profile {
