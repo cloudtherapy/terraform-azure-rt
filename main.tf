@@ -138,9 +138,9 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   }
 
   plan {
-    name      = "rockylinux-9"
-    publisher = "erockyenterprisesoftwarefoundationinc1653071250513"
-    product   = "rockylinux-9"
+    name      = "9-lvm"
+    publisher = "resf"
+    product   = "rockylinux-x86_64"
   }
 
   tags = local.tags
