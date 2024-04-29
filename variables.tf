@@ -32,3 +32,9 @@ variable "cetechllc_admin_password" {
   type        = string
   sensitive   = true
 }
+
+variable "enable_public_ip" {
+  type        = bool
+  description = "Configuration setting to enable or disable providing a public IP"
+  default     = true
+}
