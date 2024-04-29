@@ -101,6 +101,11 @@ resource "azurerm_network_interface" "vm-rt-prod-nic" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "nsg_association_rt" {
+  network_interface_id      = azurerm_network_interface.vm-rt-prod-nic.id
+  network_security_group_id = azurerm_network_security_group.nsg_rt.id
+}
+
 resource "azurerm_virtual_machine" "vm-rt-prod" {
   name                  = "vm-rt-prod"
   location              = azurerm_resource_group.rg-rt-prod.location
