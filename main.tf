@@ -53,6 +53,7 @@ output "image_id" {
 resource "azurerm_resource_group" "rg-rt-prod" {
   name     = "rg-rt-prod"
   location = var.cetechllc_location
+  tags = local.tags
 }
 
 resource "azurerm_network_security_group" "nsg_rt" {
