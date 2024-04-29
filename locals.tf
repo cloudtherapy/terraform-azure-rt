@@ -1,5 +1,5 @@
 locals {
-  
+
   tags = {
     "cetech:contact"  = "cmoreira"
     "env:platform"    = "azure-mis"

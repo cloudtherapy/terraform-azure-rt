@@ -96,6 +96,7 @@ resource "azurerm_network_interface" "vm-rt-prod-nic" {
     name                          = "vm-rt-prod-ip"
     subnet_id                     = data.azurerm_subnet.snet-shared.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = var.enable_public_ip ? azurerm_public_ip.pip_rt[0].id : ""
   }
 }
 
@@ -106,7 +107,7 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   network_interface_ids = [azurerm_network_interface.vm-rt-prod-nic.id]
   vm_size               = "Standard_B2s"
 
-  delete_os_disk_on_termination = true
+  delete_os_disk_on_termination    = true
   delete_data_disks_on_termination = true
 
   storage_image_reference {
@@ -131,8 +132,8 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
   }
 
   plan {
-    name = "rockylinux-9"
+    name      = "rockylinux-9"
     publisher = "erockyenterprisesoftwarefoundationinc1653071250513"
-    product = "rockylinux-9"
+    product   = "rockylinux-9"
   }
 }
