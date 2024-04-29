@@ -50,7 +50,7 @@ output "image_id" {
   value = data.azurerm_image.search.id
 }
 
-resource "azurerm_resource_group" "rg_rt_prod" {
+resource "azurerm_resource_group" "rg-rt-prod" {
   name     = "rg-rt-prod"
   location = var.cetechllc_location
 }
@@ -58,7 +58,7 @@ resource "azurerm_resource_group" "rg_rt_prod" {
 resource "azurerm_network_security_group" "nsg_rt" {
   name                = "nsg-rt-prod"
   location            = data.azurerm_virtual_network.vnet-shared.location
-  resource_group_name = azurerm_resource_group.rg_rt_prod.name
+  resource_group_name = azurerm_resource_group.rg-rt-prod.name
 
   tags = local.tags
 }
@@ -74,14 +74,14 @@ resource "azurerm_network_security_rule" "nsg_rules_rt" {
   destination_port_range      = each.value.destination_port_range
   source_address_prefix       = each.value.source_address_prefix
   destination_address_prefix  = each.value.destination_address_prefix
-  resource_group_name         = azurerm_resource_group.rg_rt_prod.name
+  resource_group_name         = azurerm_resource_group.rg-rt-prod.name
   network_security_group_name = azurerm_network_security_group.nsg_rt.name
 }
 
 resource "azurerm_public_ip" "pip_rt" {
   count               = var.enable_public_ip ? 1 : 0
   name                = format("pip-%s", "vm-rt-prod")
-  resource_group_name = azurerm_resource_group.rg_rt_prod.name
+  resource_group_name = azurerm_resource_group.rg-rt-prod.name
   location            = data.azurerm_virtual_network.vnet-shared.location
   allocation_method   = "Static"
   sku                 = "Standard"
@@ -89,8 +89,8 @@ resource "azurerm_public_ip" "pip_rt" {
 
 resource "azurerm_network_interface" "vm-rt-prod-nic" {
   name                = "vm-rt-prod-nic"
-  location            = azurerm_resource_group.rg_rt_prod.location
-  resource_group_name = azurerm_resource_group.rg_rt_prod.name
+  location            = azurerm_resource_group.rg-rt-prod.location
+  resource_group_name = azurerm_resource_group.rg-rt-prod.name
 
   ip_configuration {
     name                          = "vm-rt-prod-ip"
@@ -101,8 +101,8 @@ resource "azurerm_network_interface" "vm-rt-prod-nic" {
 
 resource "azurerm_virtual_machine" "vm-rt-prod" {
   name                  = "vm-rt-prod"
-  location              = azurerm_resource_group.rg_rt_prod.location
-  resource_group_name   = azurerm_resource_group.rg_rt_prod.name
+  location              = azurerm_resource_group.rg-rt-prod.location
+  resource_group_name   = azurerm_resource_group.rg-rt-prod.name
   network_interface_ids = [azurerm_network_interface.vm-rt-prod-nic.id]
   vm_size               = "Standard_B2s"
 
