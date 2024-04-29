@@ -58,7 +58,7 @@ resource "azurerm_resource_group" "rg_rt_prod" {
 resource "azurerm_network_security_group" "nsg_rt" {
   name                = "nsg-rt-prod"
   location            = data.azurerm_virtual_network.vnet-shared.location
-  resource_group_name = azurerm_resource_group.rg-rt-prod.name
+  resource_group_name = azurerm_resource_group.rg_rt_prod.name
 
   tags = local.tags
 }
@@ -89,8 +89,8 @@ resource "azurerm_public_ip" "pip_rt" {
 
 resource "azurerm_network_interface" "vm-rt-prod-nic" {
   name                = "vm-rt-prod-nic"
-  location            = azurerm_resource_group.rg-rt-prod.location
-  resource_group_name = azurerm_resource_group.rg-rt-prod.name
+  location            = azurerm_resource_group.rg_rt_prod.location
+  resource_group_name = azurerm_resource_group.rg_rt_prod.name
 
   ip_configuration {
     name                          = "vm-rt-prod-ip"
