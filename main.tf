@@ -138,11 +138,5 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
     disable_password_authentication = false
   }
 
-  /*plan {
-    name      = "9-lvm"
-    publisher = "resf"
-    product   = "rockylinux-x86_64"
-  } */
-
   tags = local.tags
 }
