@@ -42,7 +42,7 @@ output "subnet_id" {
 }
 
 data "azurerm_image" "search" {
-  name                = "cetech-rocky9"
+  name                = "cetech-ubuntu24"
   resource_group_name = "rg-shared-services"
 }
 
@@ -125,12 +125,12 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Premium_LRS"
-    disk_size_gb      = 64
+    disk_size_gb      = 30
   }
 
   os_profile {
     computer_name  = "vm-rt-prod"
-    admin_username = "rocky"
+    admin_username = "ubuntu"
     admin_password = var.cetechllc_admin_password
   }
 
@@ -138,11 +138,11 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
     disable_password_authentication = false
   }
 
-  plan {
+  /*plan {
     name      = "9-lvm"
     publisher = "resf"
     product   = "rockylinux-x86_64"
-  }
+  } */
 
   tags = local.tags
 }
