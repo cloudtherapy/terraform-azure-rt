@@ -54,9 +54,9 @@ resource "azurerm_resource_group" "rg-rt-prod" {
   name     = "rg-rt-prod"
   location = var.cetechllc_location
   tags = merge(local.tags, {
-    git_commit           = "f10d0c5d820d573b8ce01cd87bb2764bc2a4614e"
+    git_commit           = "d2e65861995154e40a6315a5f997b04ecfd43843"
     git_file             = "main.tf"
-    git_last_modified_at = "2024-04-29 19:31:09"
+    git_last_modified_at = "2024-04-29 13:21:31"
     git_last_modified_by = "cmoreira@misfirm.com"
     git_modifiers        = "cmoreira"
     git_org              = "cloudtherapy"
@@ -131,9 +131,9 @@ resource "azurerm_network_interface" "vm-rt-prod-nic" {
     public_ip_address_id          = var.enable_public_ip ? azurerm_public_ip.pip_rt[0].id : ""
   }
   tags = {
-    git_commit           = "d2e65861995154e40a6315a5f997b04ecfd43843"
+    git_commit           = "cdfc79b1064a15a38029fd11f1debc06b64a5fba"
     git_file             = "main.tf"
-    git_last_modified_at = "2024-04-29 13:21:31"
+    git_last_modified_at = "2024-04-29 13:30:19"
     git_last_modified_by = "cmoreira@misfirm.com"
     git_modifiers        = "cmoreira"
     git_org              = "cloudtherapy"
