@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run checkov
-      id: checkov --check CKV_AZURE_160
+      id: checkov 
       uses: bridgecrewio/checkov-action@master
       with:
         directory: /
