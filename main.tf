@@ -53,7 +53,17 @@ output "image_id" {
 resource "azurerm_resource_group" "rg-rt-prod" {
   name     = "rg-rt-prod"
   location = var.cetechllc_location
-  tags     = local.tags
+  tags = merge(local.tags, {
+    git_commit           = "d2e65861995154e40a6315a5f997b04ecfd43843"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-04-29 13:21:31"
+    git_last_modified_by = "cmoreira@misfirm.com"
+    git_modifiers        = "cmoreira"
+    git_org              = "cloudtherapy"
+    git_repo             = "terraform-azure-rt"
+    yor_name             = "rg-rt-prod"
+    yor_trace            = "d03d43e3-51e3-4d3c-a454-6faf8b551c49"
+  })
 }
 
 resource "azurerm_network_security_group" "nsg_rt" {
@@ -61,7 +71,17 @@ resource "azurerm_network_security_group" "nsg_rt" {
   location            = data.azurerm_virtual_network.vnet-shared.location
   resource_group_name = azurerm_resource_group.rg-rt-prod.name
 
-  tags = local.tags
+  tags = merge(local.tags, {
+    git_commit           = "d2e65861995154e40a6315a5f997b04ecfd43843"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-04-29 13:21:31"
+    git_last_modified_by = "cmoreira@misfirm.com"
+    git_modifiers        = "cmoreira"
+    git_org              = "cloudtherapy"
+    git_repo             = "terraform-azure-rt"
+    yor_name             = "nsg_rt"
+    yor_trace            = "988c82be-24a7-48c2-9620-c6e7dea08bd1"
+  })
 }
 
 resource "azurerm_network_security_rule" "nsg_rules_rt" {
@@ -86,6 +106,17 @@ resource "azurerm_public_ip" "pip_rt" {
   location            = data.azurerm_virtual_network.vnet-shared.location
   allocation_method   = "Static"
   sku                 = "Standard"
+  tags = {
+    git_commit           = "d2e65861995154e40a6315a5f997b04ecfd43843"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-04-29 13:21:31"
+    git_last_modified_by = "cmoreira@misfirm.com"
+    git_modifiers        = "cmoreira"
+    git_org              = "cloudtherapy"
+    git_repo             = "terraform-azure-rt"
+    yor_name             = "pip_rt"
+    yor_trace            = "10d838e3-c42d-4431-8dcd-c8c730a74798"
+  }
 }
 
 resource "azurerm_network_interface" "vm-rt-prod-nic" {
@@ -98,6 +129,17 @@ resource "azurerm_network_interface" "vm-rt-prod-nic" {
     subnet_id                     = data.azurerm_subnet.snet-shared.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = var.enable_public_ip ? azurerm_public_ip.pip_rt[0].id : ""
+  }
+  tags = {
+    git_commit           = "cdfc79b1064a15a38029fd11f1debc06b64a5fba"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-04-29 13:30:19"
+    git_last_modified_by = "cmoreira@misfirm.com"
+    git_modifiers        = "cmoreira"
+    git_org              = "cloudtherapy"
+    git_repo             = "terraform-azure-rt"
+    yor_name             = "vm-rt-prod-nic"
+    yor_trace            = "81ddfb08-1238-468a-916d-46ab29296261"
   }
 }
 
@@ -138,5 +180,15 @@ resource "azurerm_virtual_machine" "vm-rt-prod" {
     disable_password_authentication = false
   }
 
-  tags = local.tags
+  tags = merge(local.tags, {
+    git_commit           = "39de2e7e45c8deb1225a0d4e4c23c22c45568b19"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-05-30 00:55:04"
+    git_last_modified_by = "cmoreira@misfirm.com"
+    git_modifiers        = "cmoreira"
+    git_org              = "cloudtherapy"
+    git_repo             = "terraform-azure-rt"
+    yor_name             = "vm-rt-prod"
+    yor_trace            = "4efacbc6-9d6b-49f9-ab31-a6f8fd1d2089"
+  })
 }
