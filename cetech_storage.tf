@@ -14,8 +14,8 @@ resource "azurerm_resource_group" "cetech-tfc-rg" {
   }
 }
 
-resource "azurerm_storage_account" "cetech-tfc" {
-  name                     = "cetech-tfc"
+resource "azurerm_storage_account" "cetechtfc" {
+  name                     = "cetechtfc"
   resource_group_name      = azurerm_resource_group.cetech-tfc-rg.name
   location                 = azurerm_resource_group.cetech-tfc-rg.location
   account_tier             = "Standard"
