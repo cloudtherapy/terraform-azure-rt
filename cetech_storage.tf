@@ -23,11 +23,11 @@ resource "azurerm_storage_account" "cetechtfc" {
 
   tags = {
     environment          = "terraform-cloud"
-    yor_name             = "cetech-tfc"
+    yor_name             = "cetechtfc"
     yor_trace            = "a988eb17-c1b9-4977-9929-90abd84d5e3d"
-    git_commit           = "fc138ae41065132dc4f7bc118c50398bb36a3814"
+    git_commit           = "b83550bfd2c1516a007c9a8bd915310d4b574599"
     git_file             = "cetech_storage.tf"
-    git_last_modified_at = "2024-06-13 15:04:43"
+    git_last_modified_at = "2024-06-13 15:11:52"
     git_last_modified_by = "63737479+k-laughman@users.noreply.github.com"
     git_modifiers        = "63737479+k-laughman"
     git_org              = "cloudtherapy"
