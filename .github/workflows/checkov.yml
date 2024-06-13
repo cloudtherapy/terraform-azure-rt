@@ -19,7 +19,7 @@ jobs:
       uses: bridgecrewio/checkov-action@master
       with:
         directory: /
-        check: CKV_AZURE_160
+        #check: CKV_AZURE_160
         #soft_fail: true
         #api-key: ${{ secrets.BC_API_KEY }}
       #env:
